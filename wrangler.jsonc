@@ -1,7 +1,7 @@
 {
   "name": "astha-design-interiors-bd",
   "main": "worker.js",
-  "compatibility_date": "2026-10-21",
+  "compatibility_date": "2026-10-20",
   "assets": {
     "directory": ".",
     "binding": "ASSETS"
