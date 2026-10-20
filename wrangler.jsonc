@@ -1,0 +1,15 @@
+{
+  "name": "astha-design-interiors-bd",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-21",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "ASTHA_PROJECTS",
+      "id": "6066296cf5594e59af9cf6f674a43b27"
+    }
+  ]
+}
