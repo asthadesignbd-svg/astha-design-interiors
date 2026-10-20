@@ -7,7 +7,7 @@
 <meta name="description" content="ASTHA Design & Interiors — thoughtful interior design and architecture in Bangladesh. Your Dreams. Our Design.">
 <title>ASTHA Design & Interiors | Your Dreams. Our Design.</title>
 <style>
-:root{--red:#963a43;--red-dark:#762a33;--ink:#202020;--muted:#66615f;--paper:#fff;--cream:#f6f2ee;--line:#e7dfda;--max:1240px;--radius:3px}
+:root{--red:#C84D56;--red-dark:#A93640;--ink:#202020;--muted:#66615f;--paper:#fff;--cream:#F7F3EF;--line:#E7DFDA;--max:1320px;--radius:3px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:110px}
 body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.7 Arial,Helvetica,sans-serif}
@@ -142,6 +142,57 @@ footer{background:#171616;color:#cfc8c5;padding:24px 0;font-size:12px}
  .footer-inner{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* ASTHA final visual refinement: true red accent, larger brand and clearer navigation */
+.site-header .header-inner{min-height:166px;gap:32px}
+.site-header .brand{min-width:300px;max-width:370px}
+.site-header .brand img{height:148px;width:auto;max-width:360px;object-fit:contain;object-position:left center}
+.site-header .brand-fallback{font-size:48px}
+.site-header nav{gap:clamp(20px,2.2vw,36px)}
+.site-header nav a{font-size:17px;font-weight:600;letter-spacing:.1px}
+.site-header .nav-wrap{gap:30px}
+.site-header .header-cta{font-size:13px;padding:17px 22px;white-space:nowrap}
+.hero-inner{min-height:640px}
+.hero-copy{width:60%;max-width:760px}
+.hero h1{font-size:clamp(58px,6.1vw,82px);line-height:1.02;letter-spacing:-1.4px;margin:22px 0 26px}
+.hero h1 span{display:block;color:var(--red);white-space:nowrap}
+.hero-copy .eyebrow{font-size:12px;letter-spacing:3.2px}
+.hero-copy p{font-size:19px;max-width:590px;line-height:1.75}
+.btn{background:var(--red);border-color:var(--red)}
+.btn:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.eyebrow,.service-num{color:var(--red)}
+.service-card{border-bottom-color:var(--red)}
+.founder-logo{height:150px;max-width:340px;margin-bottom:28px}
+.founder-slogan{background:var(--red);min-height:480px}
+.founder-slogan img{height:145px;max-width:310px;width:auto;object-fit:contain;padding:16px 22px;background:#fff;border:1px solid rgba(255,255,255,.7)}
+.founder-info h2 span{color:var(--red)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--red)}
+.detail-icon{color:#F08A91}
+@media(max-width:1100px){
+ .site-header .header-inner{min-height:140px;gap:20px}
+ .site-header .brand{min-width:220px;max-width:270px}
+ .site-header .brand img{height:122px;max-width:270px}
+ .site-header .nav-wrap{gap:18px}
+ .site-header nav{gap:16px}
+ .site-header nav a{font-size:15px}
+ .site-header .header-cta{padding:14px 15px;font-size:11px}
+ .hero h1{font-size:clamp(52px,6vw,68px)}
+}
+@media(max-width:720px){
+ .site-header .header-inner{min-height:100px;gap:12px}
+ .site-header .brand{min-width:0;max-width:245px}
+ .site-header .brand img{height:88px;max-width:245px}
+ .site-header .brand-fallback{font-size:36px}
+ .site-header nav a{font-size:16px}
+ .hero-inner{min-height:570px;padding-block:52px}
+ .hero-copy{width:100%;max-width:100%}
+ .hero h1{font-size:clamp(44px,10vw,62px);line-height:1.04;letter-spacing:-.8px}
+ .hero h1 span{white-space:normal}
+ .hero-copy p{font-size:16px}
+ .founder-logo{height:112px;max-width:270px}
+ .founder-slogan img{height:115px;max-width:260px}
+}
+
 </style>
 </head>
 <body>
