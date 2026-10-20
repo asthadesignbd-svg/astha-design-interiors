@@ -1,351 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#171714">
-  <meta name="description" content="ASTHA Design & Interiors — Luxury Interior Design and Architecture in Bangladesh.">
-  <title>ASTHA Design & Interiors | Luxury Living</title>
-  <style>
-    :root {
-      --bg: #f6f3ed;
-      --ink: #20211d;
-      --gold: #b59662;
-      --muted: #77756f;
-      --dark: #191a17;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Arial, "Noto Sans Bengali", sans-serif;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
-    .topbar {
-      background: var(--dark);
-      color: #eee8dc;
-      text-align: center;
-      padding: 8px 16px;
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 22px 7%;
-      background: var(--bg);
-      border-bottom: 1px solid #e5dfd4;
-    }
-    .brand { font-size: 21px; font-weight: 700; letter-spacing: 2px; }
-    .brand small {
-      display: block;
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      color: var(--muted);
-    }
-    nav { display: flex; gap: 22px; align-items: center; font-size: 13px; }
-    nav a:hover { color: var(--gold); }
-    .lang {
-      border: 1px solid var(--gold);
-      padding: 7px 12px;
-      background: transparent;
-      color: var(--ink);
-    }
-    .hero {
-      min-height: 570px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--dark);
-      color: white;
-    }
-    .hero-copy {
-      padding: 90px 10% 80px 14%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 11px;
-    }
-    h1 {
-      font-family: Georgia, "Noto Serif Bengali", serif;
-      font-weight: 400;
-      font-size: clamp(38px, 4.7vw, 64px);
-      line-height: 1.16;
-      margin: 22px 0;
-    }
-    .hero-copy p { color: #c9c5bc; max-width: 420px; }
-    .cta {
-      margin-top: 24px;
-      display: inline-block;
-      background: var(--gold);
-      color: #171714;
-      padding: 14px 24px;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-    .hero-image {
-      min-height: 440px;
-      background:
-        linear-gradient(0deg, #17171420, #17171410),
-        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85")
-        center / cover;
-    }
-    section { padding: 85px 8%; }
-    .section-head { max-width: 660px; margin: 0 auto 42px; text-align: center; }
-    .section-head h2 {
-      font-family: Georgia, "Noto Serif Bengali", serif;
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.25;
-      font-weight: 400;
-      margin: 12px 0;
-    }
-    .section-head p { color: var(--muted); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
-    .about-grid img { width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
-    .about-grid h2 { font: 400 clamp(30px, 4vw, 43px)/1.2 Georgia, serif; }
-    .about-grid p { color: var(--muted); }
-    .services { background: #eae5db; }
-    .service-grid, .project-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-    .service {
-      padding: 30px 25px;
-      background: var(--bg);
-      border-bottom: 2px solid var(--gold);
-    }
-    .service .number { color: var(--gold); letter-spacing: 2px; }
-    .service h3 { font-size: 19px; font-weight: 500; }
-    .service p { font-size: 14px; color: var(--muted); }
-    .project { background: white; }
-    .project img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-    .project h3 { font-size: 17px; font-weight: 500; margin-bottom: 3px; }
-    .project p { color: var(--muted); font-size: 13px; margin-top: 0; }
-    .contact { background: var(--dark); color: white; }
-    .contact .section-head p { color: #c9c5bc; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; max-width: 900px; margin: auto; }
-    .contact-info p { color: #c9c5bc; }
-    form { display: grid; gap: 14px; }
-    input, textarea {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #55564f;
-      background: #242520;
-      color: white;
-      font: inherit;
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    form button { border: 0; }
-    footer {
-      background: #11120f;
-      color: #b9b6ad;
-      padding: 28px 8%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 12px;
-    }
-    @media (max-width: 800px) {
-      header { padding: 18px 5%; flex-wrap: wrap; }
-      nav { order: 3; width: 100%; overflow-x: auto; gap: 17px; padding: 8px 0; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-copy { padding: 65px 8%; }
-      .hero-image { min-height: 340px; }
-      section { padding: 65px 6%; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 28px; }
-      .service-grid, .project-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c8102e">
+<meta name="description" content="ASTHA Design & Interiors — thoughtful interior design and architecture in Bangladesh. Your Dreams. Our Design.">
+<title>ASTHA Design & Interiors | Your Dreams. Our Design.</title>
+<style>
+:root{--red:#c8102e;--red-dark:#a90d26;--ink:#171717;--muted:#666;--paper:#fff;--soft:#f7f5f4;--line:#e9e5e4;--max:1200px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Arial,"Noto Sans Bengali",sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+img{max-width:100%}
+.wrap{width:min(var(--max),92%);margin-inline:auto}
+.topline{background:var(--ink);color:#fff;text-align:center;padding:7px 12px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.header-inner{min-height:112px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:15px;min-width:0}
+.brand img{display:block;width:auto;height:100px;max-width:min(42vw,300px);object-fit:contain}
+.brand-fallback{display:none;color:var(--red);font-family:Georgia,serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1}
+.brand-fallback small{display:block;color:#222;font:600 11px/1.6 Arial,sans-serif;letter-spacing:2px}
+nav{display:flex;align-items:center;gap:clamp(12px,2vw,28px);font-size:14px;font-weight:600}
+nav a{padding:10px 0}
+nav a:hover{color:var(--red)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;background:var(--red);color:white;border:1px solid var(--red);font-weight:700;font-size:13px;letter-spacing:.4px;transition:.2s}
+.nav-cta:hover,.btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--ink);border-color:#bdb7b7}
+.btn-outline:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.menu-btn{display:none;background:white;border:1px solid var(--line);padding:9px 12px;font-size:23px}
+.hero{position:relative;overflow:hidden;background:var(--soft);isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-2;inset:0 0 0 48%;background:linear-gradient(90deg,rgba(15,15,15,.05),rgba(15,15,15,.2)),url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat}
+.hero:after{content:"";position:absolute;z-index:-1;inset:0 0 0 48%;background:linear-gradient(90deg,var(--soft) 0%,rgba(247,245,244,.2) 32%,rgba(0,0,0,.08) 100%)}
+.hero-inner{min-height:590px;display:flex;align-items:center;padding-block:85px}
+.hero-copy{max-width:660px}
+.eyebrow{display:block;color:var(--red);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+h1,h2{font-family:Georgia,"Times New Roman",serif;line-height:1.08;letter-spacing:-1.4px}
+h1{font-size:clamp(48px,6.5vw,86px);margin:22px 0}
+h1 span{display:block;color:var(--red);font-style:italic}
+.hero-copy p{max-width:560px;color:#555;font-size:clamp(17px,2vw,20px);margin:0 0 28px}
+.actions{display:flex;gap:13px;flex-wrap:wrap}
+section{padding:90px 0}
+.section-heading{max-width:740px;margin:0 auto 42px;text-align:center}
+.section-heading h2{font-size:clamp(34px,4.5vw,54px);margin:13px 0}
+.section-heading p{color:var(--muted);margin:0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-photo{min-height:430px;background:url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85") center/cover no-repeat}
+.about-copy h2{font-size:clamp(34px,4vw,50px);margin:15px 0}
+.about-copy p{color:var(--muted)}
+.checkline{padding-left:20px;border-left:3px solid var(--red);margin-top:24px;font-weight:700}
+.services{background:var(--soft)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.service-card{background:#fff;padding:30px;border:1px solid var(--line);border-bottom:3px solid var(--red)}
+.service-num{color:var(--red);font-size:12px;font-weight:700;letter-spacing:2px}
+.service-card h3{font:700 21px/1.3 Arial,sans-serif;margin:14px 0 9px}
+.service-card p{color:var(--muted);font-size:14px;margin:0}
+.projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.project-card{border:1px solid var(--line);background:#fff}
+.project-img{height:250px;background-size:cover;background-position:center}
+.project-card div:last-child{padding:17px 20px}
+.project-card h3{margin:0 0 3px;font-size:18px}
+.project-card p{margin:0;color:var(--muted);font-size:12px;letter-spacing:1px}
+.contact-section{background:var(--ink);color:white}
+.contact-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.contact-section .section-heading{text-align:left;margin:0 0 25px}
+.contact-section .section-heading p{color:#c8c8c8}
+.contact-details{display:grid;gap:15px;margin-top:25px}
+.detail{display:flex;gap:13px;align-items:flex-start;color:#e3e3e3;overflow-wrap:anywhere}
+.detail strong{color:white;display:block;font-size:13px}
+.detail a:hover{color:#ffb8c4}
+.contact-form{display:grid;gap:13px}
+.contact-form input,.contact-form textarea{width:100%;padding:15px 16px;background:#242424;border:1px solid #484848;color:white;outline:none}
+.contact-form input:focus,.contact-form textarea:focus{border-color:#ff6c83}
+.contact-form textarea{min-height:135px;resize:vertical}
+.contact-form .btn{width:100%;border:0}
+.form-note{color:#bdbdbd;font-size:12px;margin:0}
+.about-card{padding:70px 0;background:#fff}
+.business-card{border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.business-info{padding:clamp(24px,4vw,48px)}
+.business-logo{height:90px;width:auto;max-width:220px;object-fit:contain;object-position:left center;margin-bottom:24px}
+.business-info h2{font:700 clamp(25px,3vw,36px)/1.2 Arial,sans-serif;letter-spacing:-.5px;margin:0 0 8px}
+.business-info h2 span{color:var(--red)}
+.role{font-weight:700;margin:0 0 22px}
+.contact-lines{font-size:14px;color:#444;display:grid;gap:7px;overflow-wrap:anywhere}
+.address{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:14px}
+.slogan{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:15px;background:var(--red);color:white;padding:40px 25px}
+.slogan h3{font:italic 400 clamp(28px,3.5vw,44px)/1.2 Georgia,serif;margin:0}
+.slogan p{margin:0;letter-spacing:1px}
+footer{background:#111;color:#c9c9c9;padding:23px 0;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a:hover{color:white}
+@media(max-width:850px){
+ .header-inner{min-height:94px;gap:12px}.brand img{height:82px;max-width:48vw}
+ nav{gap:12px;font-size:12px}.nav-cta{display:none}
+ .hero:before,.hero:after{inset:0;opacity:.18}.hero:after{background:linear-gradient(90deg,var(--soft),rgba(247,245,244,.88))}
+ .hero-inner{min-height:530px;padding-block:65px}.hero-copy{max-width:650px}
+ .about-grid{gap:30px}.about-photo{min-height:350px}
+ .cards,.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .contact-layout{gap:30px}
+}
+@media(max-width:600px){
+ .wrap{width:min(100% - 34px,var(--max))}
+ .header-inner{min-height:86px;flex-wrap:wrap;padding-block:8px}
+ .brand img{height:72px;max-width:65vw}
+ .menu-btn{display:block}
+ nav{display:none;order:3;width:100%;padding:8px 0 13px;flex-direction:column;align-items:stretch;gap:0}
+ nav.open{display:flex}
+ nav a{padding:11px 4px;border-top:1px solid var(--line);font-size:14px}
+ .hero-inner{min-height:520px;padding-block:55px}
+ h1{font-size:clamp(44px,13vw,65px);letter-spacing:-1px}
+ .hero-copy p{font-size:17px}
+ .actions{flex-direction:column;align-items:stretch}.actions .btn{width:100%}
+ section{padding:65px 0}
+ .about-grid,.contact-layout,.business-card{grid-template-columns:1fr}
+ .about-photo{min-height:280px;order:2}
+ .cards,.projects-grid{grid-template-columns:1fr}
+ .project-img{height:230px}
+ .contact-section .section-heading{text-align:left}
+ .business-info{padding:27px}
+ .business-logo{height:78px}
+ .slogan{min-height:190px}
+ .footer-inner{flex-direction:column}
+}
+</style>
 </head>
 <body>
-  <div class="topbar" data-i="top">THOUGHTFUL SPACES · TIMELESS DESIGN</div>
-  <header>
-   <a class="brand" href="#home">
-  <img src="images/images/Astha-02.png" alt="ASTHA Design & Interiors Logo"
-       style="height:110px; width:auto; max-width:100%; object-fit:contain;
-</a>
-  
-  
-    <nav>
-      <a href="#home" data-i="home">Home</a>
-      <a href="#about" data-i="about">About Us</a>
-      <a href="#services" data-i="services">Services</a>
-      <a href="#projects" data-i="projects">Projects</a>
-      <a href="#contact" data-i="contact">Contact</a>
+<div class="topline">Thoughtful spaces · Timeless design</div>
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#home" aria-label="ASTHA Design & Interiors home">
+      <img id="site-logo" src="images/images/Astha-02.png" alt="ASTHA Design & Interiors logo">
+      <span class="brand-fallback" id="logo-fallback">ASTHA<small>DESIGN &amp; INTERIORS</small></span>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
     </nav>
-    <button class="lang" id="language" type="button">বাংলা</button>
-  </header>
-
-  <main>
-    <div class="hero" id="home">
+    <a class="nav-cta" href="#contact">DISCUSS YOUR PROJECT ↗</a>
+  </div>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow" data-i="eyebrow">INTERIOR DESIGN & ARCHITECTURE</span>
-        <h1 data-i="heroTitle">Spaces that inspire. <br>Design that lasts.</h1>
-        <p data-i="heroText">We create thoughtful, refined interiors that bring beauty, comfort and purpose into everyday living.</p>
-        <a class="cta" href="#projects" data-i="heroCta">DISCOVER OUR WORK ↗</a>
+        <span class="eyebrow">ASTHA Design &amp; Interiors</span>
+        <h1>Your Dreams.<span>Our Design.</span></h1>
+        <p>Thoughtful interiors, timeless details and spaces designed around the way you live and work. Let’s bring your vision to life.</p>
+        <div class="actions"><a class="btn" href="#contact">DISCUSS YOUR PROJECT ↗</a><a class="btn btn-outline" href="#projects">EXPLORE OUR WORK</a></div>
       </div>
-      <div class="hero-image" role="img" aria-label="Luxury contemporary interior"></div>
     </div>
-
-    <section id="about">
-      <div class="about-grid">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="Elegant contemporary living room" loading="lazy">
-        <div>
-          <span class="eyebrow" data-i="aboutLabel">OUR PHILOSOPHY</span>
-          <h2 data-i="aboutTitle">Designing a better way to live.</h2>
-          <p data-i="aboutText">At ASTHA Design & Interiors, we believe great design is more than appearance. It is the balance of function, craftsmanship, light and materials—shaped around the people who use each space.</p>
-          <a class="cta" href="#contact" data-i="aboutCta">LET'S TALK ABOUT YOUR SPACE ↗</a>
+  </section>
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-photo" role="img" aria-label="Contemporary interior design"></div>
+      <div class="about-copy">
+        <span class="eyebrow">About ASTHA</span>
+        <h2>Thoughtful spaces. Timeless design.</h2>
+        <p>At ASTHA Design &amp; Interiors, we believe good design should look beautiful and work beautifully. We plan spaces with care, balancing comfort, function, materials and detail around the people who use them.</p>
+        <p>From homes to offices and commercial spaces, our aim is to turn your ideas into interiors that feel personal, practical and lasting.</p>
+        <p class="checkline">Your Dreams, Our Design.</p>
+      </div>
+    </div>
+  </section>
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-heading"><span class="eyebrow">What We Do</span><h2>Design with purpose.</h2><p>From the first idea to the finishing touches, we help shape spaces around your needs.</p></div>
+      <div class="cards">
+        <article class="service-card"><span class="service-num">01 / RESIDENTIAL</span><h3>Home Interior Design</h3><p>Comfortable, personal spaces shaped around your lifestyle, taste and everyday routine.</p></article>
+        <article class="service-card"><span class="service-num">02 / COMMERCIAL</span><h3>Office &amp; Commercial</h3><p>Professional interiors designed to support your team, customers and business identity.</p></article>
+        <article class="service-card"><span class="service-num">03 / PLANNING</span><h3>Architecture &amp; Planning</h3><p>Thoughtful space planning that brings together function, visual balance and lasting value.</p></article>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-heading"><span class="eyebrow">Selected Work</span><h2>Spaces made personal.</h2><p>Explore a few interior styles. Replace these sample images with your own completed projects as they become available.</p></div>
+      <div class="projects-grid">
+        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80')"></div><div><h3>Contemporary Residence</h3><p>RESIDENTIAL · INTERIOR</p></div></article>
+        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80')"></div><div><h3>Quiet Luxury</h3><p>MATERIALS · DETAIL</p></div></article>
+        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80')"></div><div><h3>Modern Living</h3><p>RESIDENTIAL · DESIGN</p></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="contact-section" id="contact">
+    <div class="wrap contact-layout">
+      <div>
+        <div class="section-heading"><span class="eyebrow">Start a Conversation</span><h2>Let's create something meaningful.</h2><p>Tell us about your space, ideas and aspirations.</p></div>
+        <h3>ASTHA Design &amp; Interiors</h3>
+        <p>Have a home, office or commercial project in mind? Contact us to discuss your requirements.</p>
+        <div class="contact-details">
+          <div class="detail"><span>☎</span><div><strong>Call us</strong><a href="tel:+8801671121000">+880 1671 121 000</a><br><a href="tel:+8801712594564">+880 1712 594 564</a></div></div>
+          <div class="detail"><span>✉</span><div><strong>Email</strong><a href="mailto:astha.designbd@gmail.com">astha.designbd@gmail.com</a><br><a href="mailto:engr.rumon99@gmail.com">engr.rumon99@gmail.com</a></div></div>
+          <div class="detail"><span>⌖</span><div><strong>Visit us</strong>Road-03, Suja Nagar, 16/A Aced Malina, Mirpur-12, Dhaka-1216, Bangladesh</div></div>
+          <div class="detail"><span>f</span><div><strong>Facebook</strong><a href="https://facebook.com/asthd/designandinteriors" target="_blank" rel="noopener">facebook.com/asthd/designandinteriors</a></div></div>
         </div>
       </div>
-    </section>
-
-    <section class="services" id="services">
-      <div class="section-head">
-        <span class="eyebrow" data-i="serviceLabel">WHAT WE DO</span>
-        <h2 data-i="serviceTitle">Considered design. Exceptional detail.</h2>
-        <p data-i="serviceText">From the first sketch to the finishing touches, we bring your vision to life.</p>
-      </div>
-      <div class="service-grid">
-        <article class="service">
-          <span class="number">01 /</span>
-          <h3 data-i="s1">Residential Interior</h3>
-          <p data-i="s1t">Personalized homes designed around your lifestyle, comfort and taste.</p>
-        </article>
-        <article class="service">
-          <span class="number">02 /</span>
-          <h3 data-i="s2">Commercial Spaces</h3>
-          <p data-i="s2t">Distinctive offices and commercial interiors built for people and performance.</p>
-        </article>
-        <article class="service">
-          <span class="number">03 /</span>
-          <h3 data-i="s3">Architecture & Planning</h3>
-          <p data-i="s3t">Thoughtful planning that balances aesthetics, practicality and enduring value.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="section-head">
-        <span class="eyebrow" data-i="projectLabel">SELECTED WORK</span>
-        <h2 data-i="projectTitle">Spaces made personal.</h2>
-        <p data-i="projectText">A glimpse of the possibilities. These sample images will be replaced with your real projects.</p>
-      </div>
-      <div class="project-grid">
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Modern living room" loading="lazy">
-          <div style="padding:15px 17px">
-            <h3 data-i="p1">Contemporary Residence</h3>
-            <p data-i="p1t">RESIDENTIAL · INTERIOR</p>
-          </div>
-        </article>
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Elegant interior detail" loading="lazy">
-          <div style="padding:15px 17px">
-            <h3 data-i="p2">Quiet Luxury</h3>
-            <p data-i="p2t">MATERIALS · DETAIL</p>
-          </div>
-        </article>
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Premium interior design" loading="lazy">
-          <div style="padding:15px 17px">
-            <h3 data-i="p3">Modern Living</h3>
-            <p data-i="p3t">RESIDENTIAL · DESIGN</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="section-head">
-        <span class="eyebrow" data-i="contactLabel">START A CONVERSATION</span>
-        <h2 data-i="contactTitle">Let's create something meaningful.</h2>
-        <p data-i="contactText">Tell us about your space, ideas and aspirations.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>ASTHA Design & Interiors</h3>
-          <p data-i="contactInfo">Have a home, office or commercial project in mind? Contact us to discuss your requirements.</p>
-          <p>Bangladesh</p>
-          <p data-i="emailNote">Email and phone details can be added here.</p>
+      <form class="contact-form" id="contact-form">
+        <input id="visitor-name" name="name" placeholder="Your name" autocomplete="name" required>
+        <input id="visitor-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+        <input id="visitor-phone" name="phone" type="tel" placeholder="Phone number (optional)" autocomplete="tel">
+        <textarea id="visitor-project" name="project" placeholder="Tell us about your project" required></textarea>
+        <button class="btn" type="submit">PREPARE EMAIL ↗</button>
+        <p class="form-note">This form opens your email app. It does not store submissions on this website.</p>
+      </form>
+    </div>
+  </section>
+  <section class="about-card" aria-label="ASTHA founder and business details">
+    <div class="wrap business-card">
+      <div class="business-info">
+        <img class="business-logo" src="images/images/Astha-02.png" alt="ASTHA Design & Interiors logo" onerror="this.onerror=null;this.src='images/Astha-02.png';">
+        <h2>Rezaul Karim <span>Rumon</span></h2>
+        <p class="role">Founder &amp; CEO</p>
+        <div class="contact-lines">
+          <a href="tel:+8801671121000">+880 1671 121 000</a>
+          <a href="tel:+8801712594564">+880 1712 594 564</a>
+          <a href="mailto:engr.rumon99@gmail.com">engr.rumon99@gmail.com</a>
+          <a href="mailto:astha.designbd@gmail.com">astha.designbd@gmail.com</a>
+          <a href="https://facebook.com/asthd/designandinteriors" target="_blank" rel="noopener">facebook.com/asthd/designandinteriors</a>
         </div>
-        <form id="contactForm">
-          <input name="name" required placeholder="Your name" data-ph="name">
-          <input name="email" type="email" required placeholder="Email address" data-ph="email">
-          <textarea name="message" required placeholder="Tell us about your project" data-ph="message"></textarea>
-          <button class="cta" type="submit" data-i="send">PREPARE EMAIL ↗</button>
-          <small data-i="formNote">This demo opens your email app; it does not store enquiries.</small>
-        </form>
+        <div class="address">⌖ &nbsp; Road-03, Suja Nagar, 16/A Aced Malina, Mirpur-12, Dhaka-1216</div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© <span id="year"></span> ASTHA Design & Interiors</span>
-    <span data-i="footer">Thoughtfully designed. Beautifully lived.</span>
-  </footer>
-
-  <script>
-    const translations = {
-      en: {
-        top:"THOUGHTFUL SPACES · TIMELESS DESIGN",home:"Home",about:"About Us",services:"Services",projects:"Projects",contact:"Contact",
-        eyebrow:"INTERIOR DESIGN & ARCHITECTURE",heroTitle:"Spaces that inspire. <br>Design that lasts.",heroText:"We create thoughtful, refined interiors that bring beauty, comfort and purpose into everyday living.",heroCta:"DISCOVER OUR WORK ↗",
-        aboutLabel:"OUR PHILOSOPHY",aboutTitle:"Designing a better way to live.",aboutText:"At ASTHA Design & Interiors, we believe great design is more than appearance. It is the balance of function, craftsmanship, light and materials—shaped around the people who use each space.",aboutCta:"LET'S TALK ABOUT YOUR SPACE ↗",
-        serviceLabel:"WHAT WE DO",serviceTitle:"Considered design. Exceptional detail.",serviceText:"From the first sketch to the finishing touches, we bring your vision to life.",
-        s1:"Residential Interior",s1t:"Personalized homes designed around your lifestyle, comfort and taste.",s2:"Commercial Spaces",s2t:"Distinctive offices and commercial interiors built for people and performance.",s3:"Architecture & Planning",s3t:"Thoughtful planning that balances aesthetics, practicality and enduring value.",
-        projectLabel:"SELECTED WORK",projectTitle:"Spaces made personal.",projectText:"A glimpse of the possibilities. These sample images will be replaced with your real projects.",p1:"Contemporary Residence",p1t:"RESIDENTIAL · INTERIOR",p2:"Quiet Luxury",p2t:"MATERIALS · DETAIL",p3:"Modern Living",p3t:"RESIDENTIAL · DESIGN",
-        contactLabel:"START A CONVERSATION",contactTitle:"Let's create something meaningful.",contactText:"Tell us about your space, ideas and aspirations.",contactInfo:"Have a home, office or commercial project in mind? Contact us to discuss your requirements.",emailNote:"Email and phone details can be added here.",send:"PREPARE EMAIL ↗",formNote:"This demo opens your email app; it does not store enquiries.",footer:"Thoughtfully designed. Beautifully lived.",
-        name:"Your name",email:"Email address",message:"Tell us about your project"
-      },
-      bn: {
-        top:"সুপরিকল্পিত স্থান · চিরকালীন নকশা",home:"হোম",about:"আমাদের সম্পর্কে",services:"সেবাসমূহ",projects:"প্রজেক্ট",contact:"যোগাযোগ",
-        eyebrow:"ইন্টেরিয়র ডিজাইন ও আর্কিটেকচার",heroTitle:"অনুপ্রেরণার স্থান। <br>স্থায়ী সৌন্দর্যের নকশা।",heroText:"সৌন্দর্য, স্বাচ্ছন্দ্য ও কার্যকারিতার সমন্বয়ে আমরা তৈরি করি আপনার জীবনযাপনের উপযোগী পরিশীলিত ইন্টেরিয়র।",heroCta:"আমাদের কাজ দেখুন ↗",
-        aboutLabel:"আমাদের দর্শন",aboutTitle:"জীবনযাপনের আরও সুন্দর নকশা।",aboutText:"ASTHA Design & Interiors-এ আমরা বিশ্বাস করি, ভালো ডিজাইন শুধু সৌন্দর্য নয়। ব্যবহারিক সুবিধা, দক্ষ কারিগরি, আলো ও উপকরণের সমন্বয়ে প্রতিটি স্থানকে ব্যবহারকারীর উপযোগী করে তোলাই আমাদের লক্ষ্য।",aboutCta:"আপনার স্পেস নিয়ে কথা বলুন ↗",
-        serviceLabel:"আমাদের সেবা",serviceTitle:"পরিকল্পিত নকশা, নিখুঁত বিবরণ।",serviceText:"প্রথম স্কেচ থেকে শেষ ফিনিশিং পর্যন্ত আপনার ভাবনাকে বাস্তবে রূপ দিই।",
-        s1:"আবাসিক ইন্টেরিয়র",s1t:"আপনার জীবনধারা, স্বাচ্ছন্দ্য ও রুচি অনুযায়ী বাড়ির নকশা।",s2:"বাণিজ্যিক স্পেস",s2t:"কর্মদক্ষতা ও মানুষের প্রয়োজন মাথায় রেখে অফিস ও বাণিজ্যিক ইন্টেরিয়র।",s3:"আর্কিটেকচার ও পরিকল্পনা",s3t:"সৌন্দর্য, ব্যবহারিকতা ও দীর্ঘস্থায়ী মূল্যবোধের সমন্বিত পরিকল্পনা।",
-        projectLabel:"নির্বাচিত কাজ",projectTitle:"আপনার রুচিতে সাজানো স্থান।",projectText:"এগুলো নমুনা ছবি। পরবর্তীতে আপনার নিজস্ব প্রজেক্টের ছবি দিয়ে প্রতিস্থাপন করা হবে।",p1:"আধুনিক আবাসন",p1t:"আবাসিক · ইন্টেরিয়র",p2:"স্নিগ্ধ বিলাসিতা",p2t:"উপকরণ · বিবরণ",p3:"আধুনিক জীবনযাপন",p3t:"আবাসিক · ডিজাইন",
-        contactLabel:"আলাপ শুরু হোক",contactTitle:"চলুন, অর্থবহ কিছু তৈরি করি।",contactText:"আপনার স্পেস, ভাবনা ও প্রত্যাশা সম্পর্কে আমাদের জানান।",contactInfo:"বাড়ি, অফিস বা বাণিজ্যিক প্রজেক্টের পরিকল্পনা করছেন? আপনার প্রয়োজন নিয়ে আলোচনা করতে যোগাযোগ করুন।",emailNote:"এখানে ইমেইল ও ফোন নম্বর যোগ করা যাবে।",send:"ইমেইল প্রস্তুত করুন ↗",formNote:"এই নমুনা ফর্মটি ইমেইল অ্যাপ খোলে; তথ্য সংরক্ষণ করে না।",footer:"পরিকল্পিত নকশা। সুন্দর জীবনযাপন।",
-        name:"আপনার নাম",email:"ইমেইল ঠিকানা",message:"আপনার প্রজেক্ট সম্পর্কে লিখুন"
-      }
-    };
-    let lang = "en";
-    const languageButton = document.getElementById("language");
-    function setLanguage(next) {
-      lang = next;
-      document.documentElement.lang = lang === "bn" ? "bn" : "en";
-      document.querySelectorAll("[data-i]").forEach(el => {
-        const value = translations[lang][el.dataset.i];
-        if (value !== undefined) el.innerHTML = value;
-      });
-      document.querySelectorAll("[data-ph]").forEach(el => {
-        const value = translations[lang][el.dataset.ph];
-        if (value !== undefined) el.placeholder = value;
-      });
-      languageButton.textContent = lang === "en" ? "বাংলা" : "English";
-    }
-    languageButton.addEventListener("click", () => setLanguage(lang === "en" ? "bn" : "en"));
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("contactForm").addEventListener("submit", event => {
-      event.preventDefault();
-      const form = new FormData(event.currentTarget);
-      const subject = encodeURIComponent("ASTHA Design & Interiors — Project Enquiry");
-      const body = encodeURIComponent("Name: " + form.get("name") + "\nEmail: " + form.get("email") + "\n\nProject details:\n" + form.get("message"));
-      alert(lang === "bn" ? "আপনার ইমেইল অ্যাপ খুলবে। প্রকৃত ইমেইল ঠিকানা যুক্ত হলে ফর্মটি ব্যবহার করুন।" : "Your email app will open. Add the real business email address before using this form.");
-      window.location.href = "mailto:?subject=" + subject + "&body=" + body;
-    });
-  </script>
+      <div class="slogan"><h3>Your Dreams, Our Design.</h3><p>ASTHA DESIGN &amp; INTERIORS</p></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> ASTHA Design &amp; Interiors. All rights reserved.</span><span>Designed with care in Bangladesh.</span></div></footer>
+<script>
+(function(){
+  const logo=document.getElementById('site-logo');
+  const fallback=document.getElementById('logo-fallback');
+  const candidates=['images/images/Astha-02.png','images/Astha-02.png','Astha-02.png','images/images/3.jpeg','images/3.jpeg','3.jpeg'];
+  let idx=0;
+  logo.addEventListener('error',function(){
+    idx++;
+    if(idx<candidates.length){logo.src=candidates[idx];}
+    else{logo.style.display='none';fallback.style.display='block';}
+  });
+  const menu=document.getElementById('menu-btn'), nav=document.getElementById('main-nav');
+  menu.addEventListener('click',function(){
+    const open=nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded',String(open));
+    menu.textContent=open?'×':'☰';
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';}));
+  document.getElementById('year').textContent=new Date().getFullYear();
+  document.getElementById('contact-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('visitor-name').value.trim();
+    const email=document.getElementById('visitor-email').value.trim();
+    const phone=document.getElementById('visitor-phone').value.trim();
+    const project=document.getElementById('visitor-project').value.trim();
+    const subject=encodeURIComponent('Website project enquiry - '+name);
+    const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nPhone: '+(phone||'Not provided')+'\n\nProject details:\n'+project);
+    window.location.href='mailto:astha.designbd@gmail.com?subject='+subject+'&body='+body;
+  });
+})();
+</script>
 </body>
 </html>
