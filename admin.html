@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTHA Admin Panel</title>
+<style>
+:root{--red:#E31823;--dark:#202020;--bg:#f5f5f5}
+*{box-sizing:border-box}
+body{margin:0;font:15px Arial,sans-serif;background:var(--bg);color:var(--dark)}
+header{background:#202020;color:white;padding:22px}
+header h1{margin:0;font-size:23px}
+header p{margin:8px 0 0;color:#ccc}
+main{max-width:950px;margin:25px auto;padding:0 16px}
+.panel{background:white;padding:22px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 15px #0000000b}
+h2{font-size:19px;margin-top:0}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;font:inherit}
+textarea{min-height:75px;resize:vertical}
+button{padding:11px 16px;border:0;border-radius:6px;background:var(--red);color:white;font-weight:bold;cursor:pointer;margin:5px 5px 5px 0}
+button.secondary{background:#333}
+button.delete{background:#777}
+.project{border:1px solid #ddd;border-radius:9px;padding:16px;margin:15px 0}
+.project img{width:100%;max-height:210px;object-fit:cover;border-radius:6px;margin-top:10px}
+.status{padding:12px;background:#eee;border-radius:6px;overflow-wrap:anywhere}
+small{color:#666;line-height:1.6}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+<h1>ASTHA Design & Interiors</h1>
+<p>Website Project Manager</p>
+</header>
+
+<main>
+<section class="panel">
+<h2>Admin Login</h2>
+<label for="password">Admin Password</label>
+<input id="password" type="password" autocomplete="current-password"
+placeholder="Enter your ADMIN_PASSWORD">
+<button id="loadBtn" type="button">Connect & Load Projects</button>
+<p><small>Your password is used to authorize saving changes.</small></p>
+</section>
+
+<section class="panel">
+<h2>Manage Projects</h2>
+<div id="status" class="status" role="status">Connect to load your projects.</div>
+<div id="projects"></div>
+<button id="addBtn" type="button" class="secondary">+ Add Project</button>
+<button id="saveBtn" type="button">Save All Changes</button>
+</section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let projects = [];
+let connected = false;
+
+function status(message) {
+  $("status").textContent = message;
+}
+
+function render() {
+  const root = $("projects");
+  root.replaceChildren();
+
+  if (!projects.length) {
+    root.textContent = "No projects added yet. Click Add Project to begin.";
+  }
+
+  projects.forEach((p, i) => {
+    const card = document.createElement("div");
+    card.className = "project";
+
+    function field(labelText, key, placeholder, multiline=false) {
+      const label = document.createElement("label");
+      label.textContent = labelText;
+      const input = document.createElement(multiline ? "textarea" : "input");
+      input.placeholder = placeholder;
+      input.value = p[key] || "";
+      input.addEventListener("input", () => {
+        projects[i][key] = input.value;
+        if (key === "image") updatePreview();
+      });
+      card.append(label, input);
+      return input;
+    }
+
+    field("Project Title", "title", "e.g. Modern Living Room");
+    field("Description", "description", "Describe this project", true);
+    const imageInput = field(
+      "Image URL", "image", "Paste a publicly accessible image URL"
+    );
+
+    const preview = document.createElement("img");
+    preview.alt = "Project image preview";
+    preview.hidden = !p.image;
+    if (p.image) preview.src = p.image;
+
+    function updatePreview() {
+      preview.hidden = !projects[i].image;
+      preview.src = projects[i].image || "";
+    }
+
+    imageInput.addEventListener("change", updatePreview);
+    card.append(preview);
+
+    const remove = document.createElement("button");
+    remove.className = "delete";
+    remove.textContent = "Remove Project";
+    remove.type = "button";
+    remove.addEventListener("click", () => {
+      if (confirm("Remove this project? Save changes to publish the removal.")) {
+        projects.splice(i, 1);
+        render();
+      }
+    });
+    card.append(remove);
+    root.append(card);
+  });
+}
+
+$("loadBtn").addEventListener("click", async () => {
+  if (!$("password").value) {
+    status("Enter your admin password first.");
+    return;
+  }
+  status("Loading projects...");
+  try {
+    const response = await fetch("/api/projects", {
+      headers: { "Accept": "application/json" }
+    });
+    if (!response.ok) throw new Error("API returned HTTP " + response.status);
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("Unexpected project data.");
+    projects = data.map(p => ({
+      title: p.title || "",
+      description: p.description || "",
+      image: p.image || ""
+    }));
+    connected = true;
+    render();
+    status("Projects loaded. Make your edits below.");
+  } catch (error) {
+    connected = false;
+    status("Could not load projects: " + error.message);
+  }
+});
+
+$("addBtn").addEventListener("click", () => {
+  projects.push({title:"", description:"", image:""});
+  render();
+});
+
+$("saveBtn").addEventListener("click", async () => {
+  if (!connected) {
+    status("Load projects successfully before saving.");
+    return;
+  }
+  if (!$("password").value) {
+    status("Enter your admin password first.");
+    return;
+  }
+  if (projects.some(p => !p.title.trim())) {
+    status("Every project needs a title.");
+    return;
+  }
+
+  status("Saving projects...");
+  try {
+    const response = await fetch("/api/projects", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + $("password").value
+      },
+      body: JSON.stringify(projects)
+    });
+    if (!response.ok) {
+      throw new Error("Save failed (HTTP " + response.status + ").");
+    }
+    status("Saved successfully!");
+  } catch (error) {
+    status(error.message);
+  }
+});
+</script>
+</body>
+</html>
