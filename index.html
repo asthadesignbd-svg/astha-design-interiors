@@ -171,6 +171,37 @@ footer a:hover{color:white}
     min-height: 560px !important;
   }
 }
+  /* Final desktop logo and heading adjustment */
+.brand {
+  flex-shrink: 0 !important;
+}
+
+.brand img {
+  height: 170px !important;
+  max-width: 380px !important;
+  width: auto !important;
+}
+
+.hero-copy {
+  width: 100% !important;
+  max-width: 600px !important;
+}
+
+.hero-copy h1 {
+  font-size: clamp(42px, 5vw, 64px) !important;
+  letter-spacing: -1px !important;
+}
+
+@media (max-width: 600px) {
+  .brand img {
+    height: 86px !important;
+    max-width: 65vw !important;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(40px, 10vw, 54px) !important;
+  }
+}
 </style>
 </head>
 <body>
