@@ -3,220 +3,162 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#c8102e">
+<meta name="theme-color" content="#8f3039">
 <meta name="description" content="ASTHA Design & Interiors — thoughtful interior design and architecture in Bangladesh. Your Dreams. Our Design.">
 <title>ASTHA Design & Interiors | Your Dreams. Our Design.</title>
 <style>
-:root{--red:#c8102e;--red-dark:#a90d26;--ink:#171717;--muted:#666;--paper:#fff;--soft:#f7f5f4;--line:#e9e5e4;--max:1200px}
+:root{--red:#963a43;--red-dark:#762a33;--ink:#202020;--muted:#66615f;--paper:#fff;--cream:#f6f2ee;--line:#e7dfda;--max:1240px;--radius:3px}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:95px}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Arial,"Noto Sans Bengali",sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.7 Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 button,input,textarea{font:inherit}
-img{max-width:100%}
-.wrap{width:min(var(--max),92%);margin-inline:auto}
-.topline{background:var(--ink);color:#fff;text-align:center;padding:7px 12px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.header-inner{min-height:112px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:15px;min-width:0}
-.brand img {
-  display: block;
-  width: auto;
-  height: 360px !important;
-  max-width: 460px !important;
-  object-fit: contain;
-}
-.brand-fallback{display:none;color:var(--red);font-family:Georgia,serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1}
-.brand-fallback small{display:block;color:#222;font:600 11px/1.6 Arial,sans-serif;letter-spacing:2px}
-nav{display:flex;align-items:center;gap:clamp(12px,2vw,28px);font-size:14px;font-weight:600}
-nav a{padding:10px 0}
-nav a:hover{color:var(--red)}
-.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;background:var(--red);color:white;border:1px solid var(--red);font-weight:700;font-size:13px;letter-spacing:.4px;transition:.2s}
-.nav-cta:hover,.btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-1px)}
-.btn-outline{background:transparent;color:var(--ink);border-color:#bdb7b7}
-.btn-outline:hover{background:var(--ink);border-color:var(--ink);color:#fff}
-.menu-btn{display:none;background:white;border:1px solid var(--line);padding:9px 12px;font-size:23px}
-.hero{position:relative;overflow:hidden;background:var(--soft);isolation:isolate}
-.hero:before{content:"";position:absolute;z-index:-2;inset:0 0 0 48%;background:linear-gradient(90deg,rgba(15,15,15,.05),rgba(15,15,15,.2)),url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat}
-.hero:after{content:"";position:absolute;z-index:-1;inset:0 0 0 48%;background:linear-gradient(90deg,var(--soft) 0%,rgba(247,245,244,.2) 32%,rgba(0,0,0,.08) 100%)}
-.hero-inner{min-height:590px;display:flex;align-items:center;padding-block:85px}
-.hero-copy{max-width:660px}
-.eyebrow{display:block;color:var(--red);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
-h1,h2{font-family:Georgia,"Times New Roman",serif;line-height:1.08;letter-spacing:-1.4px}
-h1{font-size:clamp(48px,6.5vw,86px);margin:22px 0}
-h1 span{display:block;color:var(--red);font-style:italic}
-.hero-copy p{max-width:560px;color:#555;font-size:clamp(17px,2vw,20px);margin:0 0 28px}
-.actions{display:flex;gap:13px;flex-wrap:wrap}
-section{padding:90px 0}
-.section-heading{max-width:740px;margin:0 auto 42px;text-align:center}
-.section-heading h2{font-size:clamp(34px,4.5vw,54px);margin:13px 0}
+.wrap{width:min(var(--max),calc(100% - 64px));margin-inline:auto}
+.topline{background:var(--ink);color:#fff;text-align:center;padding:8px 16px;font-size:11px;letter-spacing:2.2px;text-transform:uppercase}
+.site-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.header-inner{min-height:142px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;flex:0 0 auto;min-width:190px}
+.brand img{width:auto;height:116px;max-width:270px;object-fit:contain;object-position:left center}
+.brand-fallback{display:none;color:var(--red);font:700 40px/1 Georgia,serif}
+.brand-fallback small{display:block;color:#333;font:600 11px/1.8 Arial,sans-serif;letter-spacing:2px}
+.nav-wrap{display:flex;align-items:center;gap:34px}
+nav{display:flex;align-items:center;gap:clamp(18px,2.1vw,32px)}
+nav a{font-size:15px;font-weight:600;padding:12px 0;white-space:nowrap;transition:color .2s}
+nav a:hover,nav a:focus-visible{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;background:var(--red);color:#fff;border:1px solid var(--red);font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--ink);border-color:#aaa09a}
+.btn-outline:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;padding:9px 13px;font-size:24px;cursor:pointer}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--cream)}
+.hero:before{content:"";position:absolute;inset:0 0 0 49%;z-index:-2;background:url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--cream) 0%,rgba(246,242,238,.98) 38%,rgba(246,242,238,.72) 52%,rgba(246,242,238,.04) 76%)}
+.hero-inner{min-height:610px;display:flex;align-items:center;padding-block:72px}
+.hero-copy{width:58%;max-width:650px}
+.eyebrow{display:block;color:var(--red);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.9px}
+h1{font-size:clamp(48px,5.2vw,70px);line-height:1.04;margin:22px 0 24px}
+h1 span{display:block;color:var(--red);font-style:italic;white-space:nowrap}
+.hero-copy p{max-width:520px;margin:0 0 28px;color:#57514d;font-size:18px;line-height:1.8}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+section{padding:92px 0}
+.section-heading{max-width:760px;margin:0 auto 44px;text-align:center}
+.section-heading h2{font-size:clamp(36px,4vw,54px);line-height:1.12;margin:14px 0}
 .section-heading p{color:var(--muted);margin:0}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .about-photo{min-height:430px;background:url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85") center/cover no-repeat}
-.about-copy h2{font-size:clamp(34px,4vw,50px);margin:15px 0}
+.about-copy h2{font-size:clamp(35px,4vw,50px);line-height:1.12;margin:14px 0 20px}
 .about-copy p{color:var(--muted)}
-.checkline{padding-left:20px;border-left:3px solid var(--red);margin-top:24px;font-weight:700}
-.services{background:var(--soft)}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.service-card{background:#fff;padding:30px;border:1px solid var(--line);border-bottom:3px solid var(--red)}
-.service-num{color:var(--red);font-size:12px;font-weight:700;letter-spacing:2px}
-.service-card h3{font:700 21px/1.3 Arial,sans-serif;margin:14px 0 9px}
-.service-card p{color:var(--muted);font-size:14px;margin:0}
-.projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.project-card{border:1px solid var(--line);background:#fff}
-.project-img{height:250px;background-size:cover;background-position:center}
-.project-card div:last-child{padding:17px 20px}
-.project-card h3{margin:0 0 3px;font-size:18px}
-.project-card p{margin:0;color:var(--muted);font-size:12px;letter-spacing:1px}
-.contact-section{background:var(--ink);color:white}
-.contact-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
-.contact-section .section-heading{text-align:left;margin:0 0 25px}
-.contact-section .section-heading p{color:#c8c8c8}
-.contact-details{display:grid;gap:15px;margin-top:25px}
-.detail{display:flex;gap:13px;align-items:flex-start;color:#e3e3e3;overflow-wrap:anywhere}
-.detail strong{color:white;display:block;font-size:13px}
-.detail a:hover{color:#ffb8c4}
-.contact-form{display:grid;gap:13px}
-.contact-form input,.contact-form textarea{width:100%;padding:15px 16px;background:#242424;border:1px solid #484848;color:white;outline:none}
-.contact-form input:focus,.contact-form textarea:focus{border-color:#ff6c83}
-.contact-form textarea{min-height:135px;resize:vertical}
-.contact-form .btn{width:100%;border:0}
-.form-note{color:#bdbdbd;font-size:12px;margin:0}
-.about-card{padding:70px 0;background:#fff}
-.business-card{border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.business-info{padding:clamp(24px,4vw,48px)}
-.business-logo{height:90px;width:auto;max-width:220px;object-fit:contain;object-position:left center;margin-bottom:24px}
-.business-info h2{font:700 clamp(25px,3vw,36px)/1.2 Arial,sans-serif;letter-spacing:-.5px;margin:0 0 8px}
-.business-info h2 span{color:var(--red)}
-.role{font-weight:700;margin:0 0 22px}
-.contact-lines{font-size:14px;color:#444;display:grid;gap:7px;overflow-wrap:anywhere}
-.address{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:14px}
-.slogan{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:15px;background:var(--red);color:white;padding:40px 25px}
-.slogan h3{font:italic 400 clamp(28px,3.5vw,44px)/1.2 Georgia,serif;margin:0}
-.slogan p{margin:0;letter-spacing:1px}
-footer{background:#111;color:#c9c9c9;padding:23px 0;font-size:12px}
-.footer-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-footer a:hover{color:white}
-@media(max-width:850px){
- .header-inner{min-height:94px;gap:12px}.brand img{height:82px;max-width:48vw}
- nav{gap:12px;font-size:12px}.nav-cta{display:none}
- .hero:before,.hero:after{inset:0;opacity:.18}.hero:after{background:linear-gradient(90deg,var(--soft),rgba(247,245,244,.88))}
- .hero-inner{min-height:530px;padding-block:65px}.hero-copy{max-width:650px}
- .about-grid{gap:30px}.about-photo{min-height:350px}
- .cards,.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .contact-layout{gap:30px}
+.checkline{border-left:3px solid var(--red);padding-left:18px;margin:24px 0 0;font-weight:700;color:var(--ink)!important}
+.services{background:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.service-card{padding:32px;background:#fff;border:1px solid var(--line);border-bottom:3px solid var(--red)}
+.service-num{color:var(--red);font-size:11px;font-weight:700;letter-spacing:2px}
+.service-card h3{font:700 21px/1.35 Arial,sans-serif;margin:15px 0 10px}
+.service-card p{font-size:15px;color:var(--muted);margin:0}
+.projects-section{background:#fff}
+.projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.project-card{border:1px solid var(--line);background:#fff;min-width:0}
+.project-img{height:265px;background-color:#eee7e2;background-position:center;background-size:cover}
+.project-card-copy{padding:20px 22px 23px}
+.project-card h3{font:700 19px/1.35 Arial,sans-serif;margin:0 0 6px}
+.project-card p{font-size:14px;color:var(--muted);margin:0;overflow-wrap:anywhere}
+.project-empty{grid-column:1/-1;padding:28px;background:var(--cream);text-align:center;color:var(--muted)}
+.contact-section{background:#252323;color:#fff}
+.contact-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:start}
+.contact-section .section-heading{text-align:left;margin:0 0 22px}
+.contact-section .section-heading p{color:#d0c9c6}
+.contact-section h3{font:700 20px/1.4 Arial,sans-serif;margin:24px 0 8px}
+.contact-intro{color:#e0d9d6}
+.contact-details{display:grid;gap:20px;margin-top:26px}
+.detail{display:grid;grid-template-columns:25px 1fr;gap:10px;color:#e8e2df;overflow-wrap:anywhere}
+.detail-icon{color:#e4a3a8;font-size:18px}
+.detail strong{display:block;color:#fff;font-size:13px;margin-bottom:3px}
+.detail a:hover{color:#f0b9be}
+.contact-form{display:grid;gap:14px;padding:30px;background:#2d2b2a;border:1px solid #494442}
+.contact-form input,.contact-form textarea{width:100%;padding:15px 16px;background:#242221;border:1px solid #514b48;color:#fff;outline:none;border-radius:0}
+.contact-form input:focus,.contact-form textarea:focus{border-color:#d38a91}
+.contact-form textarea{min-height:145px;resize:vertical}
+.contact-form .btn{width:100%}
+.form-note{font-size:12px;color:#c8bfbb;margin:0}
+.founder-section{padding:84px 0;background:var(--cream)}
+.founder-card{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:#fff}
+.founder-info{padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.founder-logo{height:115px;width:auto;max-width:280px;object-fit:contain;object-position:left center;margin:0 0 24px}
+.founder-info h2{font:700 clamp(28px,3vw,38px)/1.2 Arial,sans-serif;letter-spacing:-.7px;margin:0 0 8px}
+.founder-info h2 span{color:var(--red)}
+.role{font-weight:700;color:var(--muted);margin:0 0 22px}
+.contact-lines{display:grid;gap:8px;color:#4f4946;font-size:14px;overflow-wrap:anywhere}
+.contact-lines a:hover{color:var(--red)}
+.address{margin-top:22px;padding-top:17px;border-top:1px solid var(--line);color:#5d5652;font-size:14px}
+.founder-slogan{min-height:450px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:17px;padding:44px 30px;background:var(--red);color:#fff}
+.founder-slogan img{width:auto;height:105px;max-width:240px;object-fit:contain;padding:12px 18px;background:#fff;border:1px solid rgba(255,255,255,.55)}
+.founder-slogan h3{font:italic 500 clamp(30px,3.3vw,44px)/1.2 Georgia,serif;margin:0}
+.founder-slogan p{font-size:12px;letter-spacing:2px;font-weight:700;margin:0}
+footer{background:#171616;color:#cfc8c5;padding:24px 0;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.admin-link{color:#cfc8c5;opacity:.7}
+.admin-link:hover{opacity:1;color:#fff}
+@media(max-width:980px){
+ .wrap{width:min(var(--max),calc(100% - 44px))}
+ .header-inner{min-height:118px;gap:18px}
+ .brand{min-width:140px}.brand img{height:94px;max-width:210px}
+ .nav-wrap{gap:18px}nav{gap:16px}nav a{font-size:13px}.header-cta{padding:13px 15px;font-size:11px}
+ .hero-inner{min-height:560px}.hero-copy{width:62%}h1{font-size:clamp(44px,5.4vw,60px)}
+ .about-grid{gap:36px}.contact-layout{gap:34px}
 }
-@media(max-width:600px){
- .wrap{width:min(100% - 34px,var(--max))}
- .header-inner{min-height:86px;flex-wrap:wrap;padding-block:8px}
- .brand img{height:72px;max-width:65vw}
- .menu-btn{display:block}
- nav{display:none;order:3;width:100%;padding:8px 0 13px;flex-direction:column;align-items:stretch;gap:0}
- nav.open{display:flex}
- nav a{padding:11px 4px;border-top:1px solid var(--line);font-size:14px}
- .hero-inner{min-height:520px;padding-block:55px}
- h1{font-size:clamp(44px,13vw,65px);letter-spacing:-1px}
- .hero-copy p{font-size:17px}
- .actions{flex-direction:column;align-items:stretch}.actions .btn{width:100%}
- section{padding:65px 0}
- .about-grid,.contact-layout,.business-card{grid-template-columns:1fr}
- .about-photo{min-height:280px;order:2}
+@media(max-width:720px){
+ .wrap{width:calc(100% - 36px)}
+ .topline{font-size:9px;letter-spacing:1.5px}
+ .header-inner{min-height:94px;flex-wrap:wrap;padding:8px 0}
+ .brand{min-width:0}.brand img{height:78px;max-width:210px}
+ .menu-btn{display:block;margin-left:auto}
+ .nav-wrap{display:none;order:3;width:100%;flex-direction:column;align-items:stretch;gap:10px;padding:8px 0 14px}
+ .nav-wrap.open{display:flex}
+ nav{width:100%;flex-direction:column;align-items:stretch;gap:0}
+ nav a{font-size:15px;padding:11px 3px;border-top:1px solid var(--line)}
+ .header-cta{width:100%}
+ .hero:before{inset:0;opacity:.24}
+ .hero:after{background:linear-gradient(90deg,rgba(246,242,238,.97),rgba(246,242,238,.82))}
+ .hero-inner{min-height:560px;padding-block:54px}
+ .hero-copy{width:100%;max-width:580px}
+ h1{font-size:clamp(42px,9.5vw,58px);letter-spacing:-.8px}
+ h1 span{white-space:normal}
+ .hero-copy p{font-size:16px}
+ .actions{align-items:stretch;flex-direction:column}
+ .actions .btn{width:100%}
+ section{padding:68px 0}
+ .about-grid,.contact-layout,.founder-card{grid-template-columns:1fr}
+ .about-photo{min-height:300px;order:2}
  .cards,.projects-grid{grid-template-columns:1fr}
- .project-img{height:230px}
+ .project-img{height:250px}
  .contact-section .section-heading{text-align:left}
- .business-info{padding:27px}
- .business-logo{height:78px}
- .slogan{min-height:190px}
- .footer-inner{flex-direction:column}
+ .contact-form{padding:20px}
+ .founder-info{padding:30px}
+ .founder-logo{height:95px}
+ .founder-slogan{min-height:320px}
+ .footer-inner{flex-direction:column;align-items:flex-start}
 }
-  /* ASTHA logo size and hero text fix */
-.header-inner {
-  min-height: 170px !important;
-}
-
-.brand img {
-  height: 150px !important;
-  max-width: 360px !important;
-  width: auto !important;
-  object-fit: contain;
-}
-
-.hero-inner {
-  min-height: 620px !important;
-  padding-block: 60px !important;
-}
-
-.hero-copy {
-  max-width: 540px !important;
-}
-
-.hero-copy p {
-  display: block !important;
-  max-width: 480px !important;
-  line-height: 1.7 !important;
-  white-space: normal !important;
-}
-
-@media (max-width: 600px) {
-  .header-inner {
-    min-height: 100px !important;
-  }
-
-  .brand img {
-    height: 86px !important;
-    max-width: 65vw !important;
-  }
-
-  .hero-inner {
-    min-height: 560px !important;
-  }
-}
-  /* Final desktop logo and heading adjustment */
-.brand {
-  flex-shrink: 0 !important;
-}
-
-.brand img {
-  height: 170px !important;
-  max-width: 380px !important;
-  width: auto !important;
-}
-
-.hero-copy {
-  width: 100% !important;
-  max-width: 600px !important;
-}
-
-.hero-copy h1 {
-  font-size: clamp(42px, 5vw, 64px) !important;
-  letter-spacing: -1px !important;
-}
-
-@media (max-width: 600px) {
-  .brand img {
-    height: 86px !important;
-    max-width: 65vw !important;
-  }
-
-  .hero-copy h1 {
-    font-size: clamp(40px, 10vw, 54px) !important;
-  }
-}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="topline">Thoughtful spaces · Timeless design</div>
-<header>
+<div class="topline">Thoughtful Spaces · Timeless Design</div>
+<header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="#home" aria-label="ASTHA Design & Interiors home">
-      <img id="site-logo" src="images/Astha-02.png" alt="ASTHA Design & Interiors logo">
+      <img src="images/Astha-02.png" alt="ASTHA Design & Interiors logo" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='block'">
       <span class="brand-fallback" id="logo-fallback">ASTHA<small>DESIGN &amp; INTERIORS</small></span>
     </a>
     <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav id="main-nav" aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#contact">DISCUSS YOUR PROJECT ↗</a>
+    <div class="nav-wrap" id="nav-wrap">
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="btn header-cta" href="#contact">Discuss Your Project ↗</a>
+    </div>
   </div>
 </header>
 <main>
@@ -226,7 +168,7 @@ footer a:hover{color:white}
         <span class="eyebrow">ASTHA Design &amp; Interiors</span>
         <h1>Your Dreams.<span>Our Design.</span></h1>
         <p>Thoughtful interiors, timeless details and spaces designed around the way you live and work. Let’s bring your vision to life.</p>
-        <div class="actions"><a class="btn" href="#contact">DISCUSS YOUR PROJECT ↗</a><a class="btn btn-outline" href="#projects">EXPLORE OUR WORK</a></div>
+        <div class="actions"><a class="btn" href="#contact">Discuss Your Project ↗</a><a class="btn btn-outline" href="#projects">Explore Our Work</a></div>
       </div>
     </div>
   </section>
@@ -252,13 +194,13 @@ footer a:hover{color:white}
       </div>
     </div>
   </section>
-  <section id="projects">
+  <section class="projects-section" id="projects">
     <div class="wrap">
-      <div class="section-heading"><span class="eyebrow">Selected Work</span><h2>Spaces made personal.</h2><p>Explore a few interior styles. Replace these sample images with your own completed projects as they become available.</p></div>
-      <div class="projects-grid">
-        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80')"></div><div><h3>Contemporary Residence</h3><p>RESIDENTIAL · INTERIOR</p></div></article>
-        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80')"></div><div><h3>Quiet Luxury</h3><p>MATERIALS · DETAIL</p></div></article>
-        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80')"></div><div><h3>Modern Living</h3><p>RESIDENTIAL · DESIGN</p></div></article>
+      <div class="section-heading"><span class="eyebrow">Selected Work</span><h2>Spaces made personal.</h2><p>Explore our interior projects. New projects added by the site administrator will appear here.</p></div>
+      <div class="projects-grid" id="projects-grid" aria-live="polite">
+        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80')"></div><div class="project-card-copy"><h3>Contemporary Residence</h3><p>Residential · Interior</p></div></article>
+        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80')"></div><div class="project-card-copy"><h3>Quiet Luxury</h3><p>Materials · Detail</p></div></article>
+        <article class="project-card"><div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80')"></div><div class="project-card-copy"><h3>Modern Living</h3><p>Residential · Design</p></div></article>
       </div>
     </div>
   </section>
@@ -267,28 +209,28 @@ footer a:hover{color:white}
       <div>
         <div class="section-heading"><span class="eyebrow">Start a Conversation</span><h2>Let's create something meaningful.</h2><p>Tell us about your space, ideas and aspirations.</p></div>
         <h3>ASTHA Design &amp; Interiors</h3>
-        <p>Have a home, office or commercial project in mind? Contact us to discuss your requirements.</p>
+        <p class="contact-intro">Have a home, office or commercial project in mind? Contact us to discuss your requirements.</p>
         <div class="contact-details">
-          <div class="detail"><span>☎</span><div><strong>Call us</strong><a href="tel:+8801671121000">+880 1671 121 000</a><br><a href="tel:+8801712594564">+880 1712 594 564</a></div></div>
-          <div class="detail"><span>✉</span><div><strong>Email</strong><a href="mailto:astha.designbd@gmail.com">astha.designbd@gmail.com</a><br><a href="mailto:engr.rumon99@gmail.com">engr.rumon99@gmail.com</a></div></div>
-          <div class="detail"><span>⌖</span><div><strong>Visit us</strong>Road-03, Suja Nagar, 16/A Aced Malina, Mirpur-12, Dhaka-1216, Bangladesh</div></div>
-          <div class="detail"><span>f</span><div><strong>Facebook</strong><a href="https://facebook.com/asthd/designandinteriors" target="_blank" rel="noopener">facebook.com/asthd/designandinteriors</a></div></div>
+          <div class="detail"><span class="detail-icon">☎</span><div><strong>Call us</strong><a href="tel:+8801671121000">+880 1671 121 000</a><br><a href="tel:+8801712594564">+880 1712 594 564</a></div></div>
+          <div class="detail"><span class="detail-icon">✉</span><div><strong>Email</strong><a href="mailto:astha.designbd@gmail.com">astha.designbd@gmail.com</a><br><a href="mailto:engr.rumon99@gmail.com">engr.rumon99@gmail.com</a></div></div>
+          <div class="detail"><span class="detail-icon">⌖</span><div><strong>Visit us</strong>Road-03, Suja Nagar, 16/A Aced Malina, Mirpur-12, Dhaka-1216, Bangladesh</div></div>
+          <div class="detail"><span class="detail-icon">f</span><div><strong>Facebook</strong><a href="https://facebook.com/asthd/designandinteriors" target="_blank" rel="noopener">facebook.com/asthd/designandinteriors</a></div></div>
         </div>
       </div>
       <form class="contact-form" id="contact-form">
-        <input id="visitor-name" name="name" placeholder="Your name" autocomplete="name" required>
-        <input id="visitor-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
-        <input id="visitor-phone" name="phone" type="tel" placeholder="Phone number (optional)" autocomplete="tel">
-        <textarea id="visitor-project" name="project" placeholder="Tell us about your project" required></textarea>
-        <button class="btn" type="submit">PREPARE EMAIL ↗</button>
+        <input name="name" placeholder="Your name" autocomplete="name" required>
+        <input name="email" type="email" placeholder="Email address" autocomplete="email" required>
+        <input name="phone" type="tel" placeholder="Phone number (optional)" autocomplete="tel">
+        <textarea name="project" placeholder="Tell us about your project" required></textarea>
+        <button class="btn" type="submit">Prepare Email ↗</button>
         <p class="form-note">This form opens your email app. It does not store submissions on this website.</p>
       </form>
     </div>
   </section>
-  <section class="about-card" aria-label="ASTHA founder and business details">
-    <div class="wrap business-card">
-      <div class="business-info">
-        <img class="business-logo" src="images/Astha-02.png" alt="ASTHA Design & Interiors logo" onerror="this.onerror=null;this.src='images/Astha-02.png';">
+  <section class="founder-section" aria-label="ASTHA founder and business details">
+    <div class="wrap founder-card">
+      <div class="founder-info">
+        <img class="founder-logo" src="images/Astha-02.png" alt="ASTHA Design & Interiors logo" onerror="this.style.display='none'">
         <h2>Rezaul Karim <span>Rumon</span></h2>
         <p class="role">Founder &amp; CEO</p>
         <div class="contact-lines">
@@ -300,40 +242,60 @@ footer a:hover{color:white}
         </div>
         <div class="address">⌖ &nbsp; Road-03, Suja Nagar, 16/A Aced Malina, Mirpur-12, Dhaka-1216</div>
       </div>
-      <div class="slogan"><h3>Your Dreams, Our Design.</h3><p>ASTHA DESIGN &amp; INTERIORS</p></div>
+      <div class="founder-slogan">
+        <img src="images/Astha-02.png" alt="ASTHA Design & Interiors logo" onerror="this.style.display='none'">
+        <h3>Your Dreams, Our Design.</h3>
+        <p>ASTHA DESIGN &amp; INTERIORS</p>
+      </div>
     </div>
   </section>
 </main>
-<footer><div class="wrap footer-inner"><span>© <span id="year"></span> ASTHA Design &amp; Interiors. All rights reserved.</span><span>Designed with care in Bangladesh.</span></div></footer>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> ASTHA Design &amp; Interiors. All rights reserved.</span><span>Designed with care in Bangladesh. · <a class="admin-link" href="/admin.html">Admin</a></span></div></footer>
 <script>
 (function(){
-  const logo=document.getElementById('site-logo');
-  const fallback=document.getElementById('logo-fallback');
-  const candidates=['images/Astha-02.png','images/Astha-02.png','Astha-02.png','images/images/3.jpeg','images/3.jpeg','3.jpeg'];
-  let idx=0;
-  logo.addEventListener('error',function(){
-    idx++;
-    if(idx<candidates.length){logo.src=candidates[idx];}
-    else{logo.style.display='none';fallback.style.display='block';}
-  });
-  const menu=document.getElementById('menu-btn'), nav=document.getElementById('main-nav');
+  const menu=document.getElementById('menu-btn');
+  const navWrap=document.getElementById('nav-wrap');
   menu.addEventListener('click',function(){
-    const open=nav.classList.toggle('open');
+    const open=navWrap.classList.toggle('open');
     menu.setAttribute('aria-expanded',String(open));
     menu.textContent=open?'×':'☰';
   });
-  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';}));
+  navWrap.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    navWrap.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';
+  }));
   document.getElementById('year').textContent=new Date().getFullYear();
+
   document.getElementById('contact-form').addEventListener('submit',function(e){
     e.preventDefault();
-    const name=document.getElementById('visitor-name').value.trim();
-    const email=document.getElementById('visitor-email').value.trim();
-    const phone=document.getElementById('visitor-phone').value.trim();
-    const project=document.getElementById('visitor-project').value.trim();
+    const data=new FormData(e.currentTarget);
+    const name=String(data.get('name')||'').trim();
+    const email=String(data.get('email')||'').trim();
+    const phone=String(data.get('phone')||'').trim();
+    const project=String(data.get('project')||'').trim();
     const subject=encodeURIComponent('Website project enquiry - '+name);
     const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nPhone: '+(phone||'Not provided')+'\n\nProject details:\n'+project);
     window.location.href='mailto:astha.designbd@gmail.com?subject='+subject+'&body='+body;
   });
+
+  function esc(value){
+    return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  }
+  async function loadProjects(){
+    const grid=document.getElementById('projects-grid');
+    try{
+      const response=await fetch('/api/projects',{headers:{'Accept':'application/json'}});
+      if(!response.ok) return;
+      const projects=await response.json();
+      if(!Array.isArray(projects)||projects.length===0) return;
+      grid.innerHTML=projects.map(project=>`<article class="project-card">
+        <div class="project-img" role="img" aria-label="${esc(project.title)}" style="background-image:url('${String(project.imageUrl||'').replace(/['"()\\]/g,'')}')"></div>
+        <div class="project-card-copy"><h3>${esc(project.title)}</h3><p>${esc(project.description||'ASTHA Design & Interiors')}</p></div>
+      </article>`).join('');
+    }catch(_error){
+      // Keep the sample gallery visible if the project API is not configured yet.
+    }
+  }
+  loadProjects();
 })();
 </script>
 </body>
