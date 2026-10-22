@@ -1,190 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FF0000">
 <title>ASTHA Admin Panel</title>
 <style>
-:root{--red:#E31823;--dark:#202020;--bg:#f5f5f5}
+:root{--red:#ff0000;--red-dark:#cc0000;--ink:#222;--muted:#666;--paper:#fff;--cream:#f6f2ee;--line:#e5ded9;--green:#18794e}
 *{box-sizing:border-box}
-body{margin:0;font:15px Arial,sans-serif;background:var(--bg);color:var(--dark)}
-header{background:#202020;color:white;padding:22px}
-header h1{margin:0;font-size:23px}
-header p{margin:8px 0 0;color:#ccc}
-main{max-width:950px;margin:25px auto;padding:0 16px}
-.panel{background:white;padding:22px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 15px #0000000b}
-h2{font-size:19px;margin-top:0}
-label{display:block;font-weight:600;margin:14px 0 6px}
-input,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;font:inherit}
-textarea{min-height:75px;resize:vertical}
-button{padding:11px 16px;border:0;border-radius:6px;background:var(--red);color:white;font-weight:bold;cursor:pointer;margin:5px 5px 5px 0}
-button.secondary{background:#333}
-button.delete{background:#777}
-.project{border:1px solid #ddd;border-radius:9px;padding:16px;margin:15px 0}
-.project img{width:100%;max-height:210px;object-fit:cover;border-radius:6px;margin-top:10px}
-.status{padding:12px;background:#eee;border-radius:6px;overflow-wrap:anywhere}
-small{color:#666;line-height:1.6}
-.hidden{display:none}
+body{margin:0;background:#f5f3f1;color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}
+button,input,textarea{font:inherit}
+.wrap{width:min(980px,calc(100% - 32px));margin:30px auto 60px}
+header{background:#222;color:#fff;padding:24px 0}
+header .wrap{margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px}
+h1{font-size:25px;margin:0}header p{margin:3px 0 0;color:#ddd;font-size:13px}
+a{color:inherit}
+.panel{background:#fff;border:1px solid var(--line);padding:24px;margin-top:20px;border-radius:8px;box-shadow:0 5px 18px #00000008}
+h2{font-size:20px;margin:0 0 15px}
+label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
+input[type=password],input[type=text],textarea,input[type=file]{width:100%;border:1px solid #cfc8c3;border-radius:5px;padding:12px;background:#fff;color:#222}
+textarea{min-height:95px;resize:vertical}
+button,.button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:5px;padding:11px 16px;background:var(--red);color:#fff;font-weight:700;cursor:pointer;text-decoration:none}
+button:hover,.button:hover{background:var(--red-dark)}
+button.secondary{background:#292929}button.secondary:hover{background:#444}
+button.danger{background:#555}button.danger:hover{background:#333}
+button:disabled{opacity:.55;cursor:wait}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.note{font-size:13px;color:var(--muted);margin:10px 0 0}
+.status{padding:11px 13px;border-radius:5px;background:#f0efed;color:#333;margin-top:14px;overflow-wrap:anywhere}
+.status.error{background:#fff0f0;color:#a00000}
+.status.success{background:#eaf7ef;color:#145b36}
+.project{border:1px solid var(--line);border-radius:7px;padding:18px;margin:15px 0;background:#fff}
+.project-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.project-top h3{font-size:17px;margin:0}
+.project-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.project-fields .full{grid-column:1/-1}
+.preview{display:flex;gap:14px;align-items:center;margin-top:12px}
+.preview img{width:120px;height:88px;object-fit:cover;border:1px solid var(--line);border-radius:4px;background:var(--cream)}
+.preview small{display:block;color:var(--muted);overflow-wrap:anywhere}
+.hidden{display:none!important}
+header a{font-size:13px;color:#fff}
+@media(max-width:620px){.wrap{width:calc(100% - 22px);margin-top:16px}.panel{padding:17px}header .wrap{align-items:flex-start;flex-direction:column}.project-fields{grid-template-columns:1fr}.project-fields .full{grid-column:auto}.project-top{align-items:flex-start}.preview img{width:90px;height:72px}}
 </style>
 </head>
 <body>
 <header>
-<h1>ASTHA Design & Interiors</h1>
-<p>Website Project Manager</p>
+  <div class="wrap">
+    <div><h1>ASTHA Design &amp; Interiors</h1><p>Website project and image manager</p></div>
+    <a href="/">← View website</a>
+  </div>
 </header>
+<main class="wrap">
+  <section class="panel" id="login-panel">
+    <h2>Admin access</h2>
+    <label for="password">Admin password</label>
+    <input id="password" type="password" autocomplete="current-password" placeholder="Enter your ADMIN_PASSWORD">
+    <div class="actions"><button id="connect-btn" type="button">Connect &amp; Load Projects</button></div>
+    <p class="note">Enter the same password configured as the Cloudflare Worker secret named ADMIN_PASSWORD. Your password is used only for requests from this page.</p>
+  </section>
 
-<main>
-<section class="panel">
-<h2>Admin Login</h2>
-<label for="password">Admin Password</label>
-<input id="password" type="password" autocomplete="current-password"
-placeholder="Enter your ADMIN_PASSWORD">
-<button id="loadBtn" type="button">Connect & Load Projects</button>
-<p><small>Your password is used to authorize saving changes.</small></p>
-</section>
-
-<section class="panel">
-<h2>Manage Projects</h2>
-<div id="status" class="status" role="status">Connect to load your projects.</div>
-<div id="projects"></div>
-<button id="addBtn" type="button" class="secondary">+ Add Project</button>
-<button id="saveBtn" type="button">Save All Changes</button>
-</section>
+  <section class="panel hidden" id="manager-panel">
+    <h2>Manage Projects</h2>
+    <p class="note">Edit project details, upload an image from your computer, then save all changes.</p>
+    <div id="projects-list"></div>
+    <div class="actions">
+      <button class="secondary" id="add-btn" type="button">+ Add Project</button>
+      <button id="save-btn" type="button">Save All Changes</button>
+      <button class="secondary" id="logout-btn" type="button">Disconnect</button>
+    </div>
+  </section>
+  <div id="status" class="status" role="status" aria-live="polite">Enter your admin password to begin.</div>
 </main>
-
 <script>
-const $ = id => document.getElementById(id);
-let projects = [];
-let connected = false;
+(() => {
+  const $ = id => document.getElementById(id);
+  let password = '';
+  let projects = [];
+  let busy = false;
 
-function status(message) {
-  $("status").textContent = message;
-}
-
-function render() {
-  const root = $("projects");
-  root.replaceChildren();
-
-  if (!projects.length) {
-    root.textContent = "No projects added yet. Click Add Project to begin.";
+  function setStatus(message, kind='') {
+    const box = $('status');
+    box.textContent = message;
+    box.className = 'status' + (kind ? ' ' + kind : '');
   }
-
-  projects.forEach((p, i) => {
-    const card = document.createElement("div");
-    card.className = "project";
-
-    function field(labelText, key, placeholder, multiline=false) {
-      const label = document.createElement("label");
-      label.textContent = labelText;
-      const input = document.createElement(multiline ? "textarea" : "input");
-      input.placeholder = placeholder;
-      input.value = p[key] || "";
-      input.addEventListener("input", () => {
-        projects[i][key] = input.value;
-        if (key === "image") updatePreview();
-      });
-      card.append(label, input);
-      return input;
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[ch]));
+  }
+  async function api(url, options={}) {
+    const headers = new Headers(options.headers || {});
+    if (password) headers.set('Authorization', 'Bearer ' + password);
+    if (!(options.body instanceof FormData) && options.body && !headers.has('Content-Type')) {
+      headers.set('Content-Type', 'application/json');
     }
-
-    field("Project Title", "title", "e.g. Modern Living Room");
-    field("Description", "description", "Describe this project", true);
-    const imageInput = field(
-      "Image URL", "image", "Paste a publicly accessible image URL"
-    );
-
-    const preview = document.createElement("img");
-    preview.alt = "Project image preview";
-    preview.hidden = !p.image;
-    if (p.image) preview.src = p.image;
-
-    function updatePreview() {
-      preview.hidden = !projects[i].image;
-      preview.src = projects[i].image || "";
-    }
-
-    imageInput.addEventListener("change", updatePreview);
-    card.append(preview);
-
-    const remove = document.createElement("button");
-    remove.className = "delete";
-    remove.textContent = "Remove Project";
-    remove.type = "button";
-    remove.addEventListener("click", () => {
-      if (confirm("Remove this project? Save changes to publish the removal.")) {
-        projects.splice(i, 1);
-        render();
-      }
-    });
-    card.append(remove);
-    root.append(card);
-  });
-}
-
-$("loadBtn").addEventListener("click", async () => {
-  if (!$("password").value) {
-    status("Enter your admin password first.");
-    return;
-  }
-  status("Loading projects...");
-  try {
-    const response = await fetch("/api/projects", {
-      headers: { "Accept": "application/json" }
-    });
-    if (!response.ok) throw new Error("API returned HTTP " + response.status);
-    const data = await response.json();
-    if (!Array.isArray(data)) throw new Error("Unexpected project data.");
-    projects = data.map(p => ({
-      title: p.title || "",
-      description: p.description || "",
-      image: p.image || ""
-    }));
-    connected = true;
-    render();
-    status("Projects loaded. Make your edits below.");
-  } catch (error) {
-    connected = false;
-    status("Could not load projects: " + error.message);
-  }
-});
-
-$("addBtn").addEventListener("click", () => {
-  projects.push({title:"", description:"", image:""});
-  render();
-});
-
-$("saveBtn").addEventListener("click", async () => {
-  if (!connected) {
-    status("Load projects successfully before saving.");
-    return;
-  }
-  if (!$("password").value) {
-    status("Enter your admin password first.");
-    return;
-  }
-  if (projects.some(p => !p.title.trim())) {
-    status("Every project needs a title.");
-    return;
-  }
-
-  status("Saving projects...");
-  try {
-    const response = await fetch("/api/projects", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + $("password").value
-      },
-      body: JSON.stringify(projects)
-    });
+    const response = await fetch(url, {...options, headers});
+    let data;
+    try { data = await response.json(); } catch { data = {}; }
     if (!response.ok) {
-      throw new Error("Save failed (HTTP " + response.status + ").");
+      const detail = data.details ? ' — ' + data.details : '';
+      throw new Error((data.error || ('Request failed (' + response.status + ')')) + detail);
     }
-    status("Saved successfully!");
-  } catch (error) {
-    status(error.message);
+    return data;
   }
-});
+  function renderProjects() {
+    const list = $('projects-list');
+    if (!projects.length) {
+      list.innerHTML = '<p class="note">No projects yet. Choose “Add Project” to create the first one.</p>';
+      return;
+    }
+    list.innerHTML = projects.map((p, i) => `
+      <article class="project" data-index="${i}">
+        <div class="project-top"><h3>Project ${i + 1}</h3><button type="button" class="danger remove-btn" data-index="${i}">Remove Project</button></div>
+        <div class="project-fields">
+          <div class="full"><label>Project title</label><input type="text" data-field="title" data-index="${i}" value="${esc(p.title)}" placeholder="e.g. Modern Living Room"></div>
+          <div class="full"><label>Description / category</label><textarea data-field="description" data-index="${i}" placeholder="e.g. Residential · Interior">${esc(p.description)}</textarea></div>
+          <div class="full"><label>Upload project image (JPG, PNG, WEBP or GIF; max 5 MB)</label><input type="file" accept="image/jpeg,image/png,image/webp,image/gif" data-upload="${i}"></div>
+          <div class="full"><label>Image URL</label><input type="text" data-field="imageUrl" data-index="${i}" value="${esc(p.imageUrl)}" placeholder="Upload an image above, or paste a public image URL"></div>
+        </div>
+        <div class="preview ${p.imageUrl ? '' : 'hidden'}" id="preview-${i}">
+          <img src="${esc(p.imageUrl)}" alt="Project image preview" onerror="this.style.display='none'">
+          <div><strong>Current image</strong><small>${esc(p.imageUrl)}</small></div>
+        </div>
+      </article>`).join('');
+  }
+  function collectFields() {
+    document.querySelectorAll('[data-field]').forEach(input => {
+      const i = Number(input.dataset.index);
+      if (!projects[i]) return;
+      projects[i][input.dataset.field] = input.value.trim();
+    });
+  }
+  async function loadProjects() {
+    password = $('password').value.trim();
+    if (!password) { setStatus('Please enter your admin password.', 'error'); return; }
+    $('connect-btn').disabled = true;
+    setStatus('Connecting and loading projects…');
+    try {
+      const data = await api('/api/projects', {headers:{Accept:'application/json'}});
+      if (!Array.isArray(data)) throw new Error('The projects API did not return a list.');
+      projects = data.map(p => ({
+        title: String(p.title || ''),
+        description: String(p.description || ''),
+        imageUrl: String(p.imageUrl || '')
+      }));
+      $('login-panel').classList.add('hidden');
+      $('manager-panel').classList.remove('hidden');
+      renderProjects();
+      setStatus('Connected. Projects loaded. Remember to save after editing.', 'success');
+    } catch (error) {
+      password = '';
+      setStatus(error.message + '. Check the password and Worker configuration, then try again.', 'error');
+    } finally {
+      $('connect-btn').disabled = false;
+    }
+  }
+  async function uploadImage(input) {
+    collectFields();
+    const i = Number(input.dataset.upload);
+    const file = input.files && input.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) { setStatus('Please select an image file.', 'error'); input.value=''; return; }
+    if (file.size > 5 * 1024 * 1024) { setStatus('The image is larger than 5 MB. Please choose a smaller file.', 'error'); input.value=''; return; }
+    input.disabled = true;
+    setStatus('Uploading image to GitHub…');
+    try {
+      const form = new FormData();
+      form.append('image', file);
+      const result = await api('/api/upload', {method:'POST', body:form});
+      const imageUrl = result.url || ('https://raw.githubusercontent.com/asthadesignbd-svg/astha-design-interiors/main/' + result.path.split('/').map(encodeURIComponent).join('/'));
+      projects[i].imageUrl = imageUrl;
+      renderProjects();
+      setStatus('Image uploaded successfully. Click “Save All Changes” to publish it in the project gallery.', 'success');
+    } catch (error) {
+      setStatus('Image upload failed: ' + error.message, 'error');
+    } finally {
+      input.disabled = false;
+    }
+  }
+  async function saveProjects() {
+    collectFields();
+    if (projects.some(p => !p.title)) {
+      setStatus('Please add a title to every project before saving.', 'error'); return;
+    }
+    if (projects.some(p => !p.imageUrl)) {
+      setStatus('Each project needs an image. Upload one or enter a public image URL.', 'error'); return;
+    }
+    $('save-btn').disabled = true;
+    setStatus('Saving projects…');
+    try {
+      await api('/api/projects', {method:'PUT', body:JSON.stringify(projects)});
+      setStatus('Saved successfully. Open the website and refresh the Projects section to check your changes.', 'success');
+    } catch (error) {
+      setStatus('Could not save: ' + error.message, 'error');
+    } finally {
+      $('save-btn').disabled = false;
+    }
+  }
+  $('connect-btn').addEventListener('click', loadProjects);
+  $('password').addEventListener('keydown', e => { if (e.key === 'Enter') loadProjects(); });
+  $('add-btn').addEventListener('click', () => {
+    collectFields();
+    projects.push({title:'', description:'', imageUrl:''});
+    renderProjects();
+    setStatus('New project added. Fill in its details and upload an image.');
+  });
+  $('save-btn').addEventListener('click', saveProjects);
+  $('logout-btn').addEventListener('click', () => {
+    password = ''; projects = [];
+    $('manager-panel').classList.add('hidden');
+    $('login-panel').classList.remove('hidden');
+    $('password').value = '';
+    setStatus('Disconnected.');
+  });
+  $('projects-list').addEventListener('input', e => {
+    if (!e.target.matches('[data-field]')) return;
+    const i = Number(e.target.dataset.index);
+    if (projects[i]) projects[i][e.target.dataset.field] = e.target.value;
+    if (e.target.dataset.field === 'imageUrl') {
+      const card = e.target.closest('.project');
+      const old = card.querySelector('.preview');
+      const url = e.target.value.trim();
+      if (url) {
+        old.classList.remove('hidden');
+        old.querySelector('img').src = url;
+        old.querySelector('img').style.display = '';
+        old.querySelector('small').textContent = url;
+      } else old.classList.add('hidden');
+    }
+  });
+  $('projects-list').addEventListener('change', e => {
+    if (e.target.matches('[data-upload]')) uploadImage(e.target);
+  });
+  $('projects-list').addEventListener('click', e => {
+    const btn = e.target.closest('.remove-btn');
+    if (!btn) return;
+    const i = Number(btn.dataset.index);
+    if (confirm('Remove this project from the website? This does not delete its image file from GitHub.')) {
+      collectFields();
+      projects.splice(i, 1);
+      renderProjects();
+      setStatus('Project removed from the draft. Click “Save All Changes” to apply it to the website.');
+    }
+  });
+})();
 </script>
 </body>
 </html>
